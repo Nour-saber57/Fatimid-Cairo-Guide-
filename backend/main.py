@@ -1,14 +1,15 @@
 from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 
-from database.database import Base, engine, get_db
+from database.database import get_db, initialize_database
 from models.place import Place
+from schemas.places import PlaceRead
 
 
 app = FastAPI()
 
 
-Base.metadata.create_all(bind=engine)
+initialize_database()
 
 
 @app.get("/health")
@@ -16,7 +17,6 @@ def health():
     return {"status": "backend is healthy"}
 
 
-@app.get("/places")
+@app.get("/places", response_model=list[PlaceRead])
 def get_places(db: Session = Depends(get_db)):
-    places = db.query(Place).all()
-    return places
+    return db.query(Place).all()

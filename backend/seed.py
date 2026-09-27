@@ -1,11 +1,8 @@
-from database.database import SessionLocal
+from database.database import SessionLocal, initialize_database
 from models.place import Place
 
 
-db = SessionLocal()
-
-
-place = Place(
+place_data = dict(
     name="Al-Aqmar Mosque",
     name_ar="الجامع الأقمر",
     category="mosque",
@@ -64,7 +61,19 @@ place = Place(
 )
 
 
-db.add(place)
-db.commit()
+def seed_places() -> None:
+    initialize_database()
 
-db.close()
+    with SessionLocal() as db:
+        existing_place = db.query(Place).filter_by(name=place_data["name"]).first()
+        if existing_place is not None:
+            print(f"Already seeded: {existing_place.name}")
+            return
+
+        db.add(Place(**place_data))
+        db.commit()
+        print(f"Seeded: {place_data['name']}")
+
+
+if __name__ == "__main__":
+    seed_places()
