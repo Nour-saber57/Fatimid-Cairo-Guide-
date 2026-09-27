@@ -4,10 +4,12 @@ from sqlalchemy.orm import Session
 from database.database import get_db, initialize_database
 from models.place import Place
 from schemas.places import PlaceRead
+from routers.places import router as places_router
 
 
 app = FastAPI()
 
+app.include_router(places_router)
 
 initialize_database()
 
@@ -17,6 +19,3 @@ def health():
     return {"status": "backend is healthy"}
 
 
-@app.get("/places", response_model=list[PlaceRead])
-def get_places(db: Session = Depends(get_db)):
-    return db.query(Place).all()

@@ -22,7 +22,8 @@ def get_place_by_name(
 ):
     place = (
         db.query(Place)
-        .filter(Place.name == place_name)
+        .filter(Place.name == place_name,
+                Place.name_ar == place_name)
         .first()
     )
 
@@ -33,3 +34,7 @@ def get_place_by_name(
         )
 
     return place
+
+@router.get("/places", response_model=list[PlaceRead])
+def get_places(db: Annotated[Session, Depends(get_db)]) -> list[Place]:
+    return db.query(Place).all()
