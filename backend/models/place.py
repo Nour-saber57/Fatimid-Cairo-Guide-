@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text
+from sqlalchemy import Column, Integer, String, Text,Float
 from database.database import Base
 
 
@@ -13,12 +13,19 @@ class Place(Base):
     category = Column(String, nullable=False)
 
     short_description = Column(Text)
-    story = Column(Text)
+    overview = Column(Text)
+    history = Column(Text)
+    architecture = Column(Text)
+    details = Column(Text)
+    
 
     built_year = Column(Integer)
 
     dynasty = Column(String)
 
     location = Column(String)
+    latitude = Column(Float)
+    longitude = Column(Float)
 
-    image_url = Column(String)
+    hero_image_url = Column(String)
+    thumbnail_url= Column(String)
