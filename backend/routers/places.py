@@ -16,21 +16,24 @@ router = APIRouter()
 def get_places(db: Annotated[Session, Depends(get_db)]) -> list[Place]:
     return db.query(Place).all()
 
-
 @router.get("/places/search/", response_model=list[PlaceRead])
 def search_places(
     q: str,
-    db: Annotated[Session, Depends(get_db)],
+    db: Annotated[Session, Depends(get_db)]
 ):
     places = (
         db.query(Place)
         .filter(
             or_(
                 Place.name.ilike(f"%{q}%"),
-                Place.name_ar.contains(q),
+                Place.name_ar.contains(q)
             )
         )
         .all()
     )
 
     return places
+
+@router.get("/places", response_model=list[PlaceRead])
+def get_places(db: Annotated[Session, Depends(get_db)]) -> list[Place]:
+    return db.query(Place).all()
