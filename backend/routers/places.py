@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 from database.database import get_db
 from models.place import Place
 from schemas.places import PlaceRead
+from sqlalchemy import or_
 
 
 router = APIRouter()
@@ -15,25 +16,23 @@ router = APIRouter()
 def get_places(db: Annotated[Session, Depends(get_db)]) -> list[Place]:
     return db.query(Place).all()
 
-@router.get("/places/{place_name}", response_model=PlaceRead)
-def get_place_by_name(
-    place_name: str,
+@router.get("/places/search/", response_model=list[PlaceRead])
+def search_places(
+    q: str,
     db: Annotated[Session, Depends(get_db)]
 ):
-    place = (
+    places = (
         db.query(Place)
-        .filter(Place.name == place_name,
-                Place.name_ar == place_name)
-        .first()
+        .filter(
+            or_(
+                Place.name.ilike(f"%{q}%"),
+                Place.name_ar.contains(q)
+            )
+        )
+        .all()
     )
 
-    if place is None:
-        raise HTTPException(
-            status_code=404,
-            detail="Place not found"
-        )
-
-    return place
+    return places
 
 @router.get("/places", response_model=list[PlaceRead])
 def get_places(db: Annotated[Session, Depends(get_db)]) -> list[Place]:
