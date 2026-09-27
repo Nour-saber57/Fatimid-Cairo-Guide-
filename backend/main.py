@@ -1,6 +1,14 @@
 from fastapi import FastAPI
 
-app=FastAPI()
+from database.database import Base, engine
+from models.place import Place
+
+
+Base.metadata.create_all(bind=engine)
+
+
+app = FastAPI()
+
 
 @app.get("/health")
 def health():

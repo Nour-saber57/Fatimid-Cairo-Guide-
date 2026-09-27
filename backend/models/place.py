@@ -1,4 +1,4 @@
-from sqlalchemy import Integer, integer, String, Column, Text
+from sqlalchemy import Integer, String, Column, Text
 from sqlalchemy.orm import relationship
 from database.database import Base
 
