@@ -1,24 +1,4 @@
-from pydantic import BaseModel, ConfigDict, Field
-
-
-class PlaceCreate(BaseModel):
-    name: str = Field(min_length=1, max_length=200)
-    name_ar: str = Field(min_length=1, max_length=200)
-
-    category: str = Field(min_length=1, max_length=100)
-
-    short_description: str | None = None
-    overview: str | None = None
-    history: str | None = None
-    architecture: str | None = None
-    details: str | None = None
-
-    built_year: int | None = Field(default=None, ge=900, le=2100)
-
-    dynasty: str | None = None
-    location: str | None = None
-    hero_image_url: str | None = None
-    thumbnail_url: str | None = None
+from pydantic import BaseModel, ConfigDict
 
 
 class PlaceRead(BaseModel):
@@ -26,17 +6,11 @@ class PlaceRead(BaseModel):
 
     id: int
     name: str
-    name_ar: str
-    category: str
+    name_ar: str | None = None
+    category: str | None = None
     short_description: str | None = None
-    overview: str | None = None
-    history: str | None = None
-    architecture: str | None = None
-    details: str | None = None
+    story: str | None = None
     built_year: int | None = None
     dynasty: str | None = None
     location: str | None = None
-    latitude: float | None = None
-    longitude: float | None = None
-    hero_image_url: str | None = None
-    thumbnail_url: str | None = None
+    image_url: str | None = None

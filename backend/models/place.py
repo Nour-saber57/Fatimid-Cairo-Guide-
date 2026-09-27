@@ -1,31 +1,19 @@
-from sqlalchemy import Column, Integer, String, Text,Float
+from sqlalchemy import Integer, String, Text
+from sqlalchemy.orm import Mapped, mapped_column
+
 from database.database import Base
 
 
 class Place(Base):
     __tablename__ = "places"
 
-    id = Column(Integer, primary_key=True, index=True)
-
-    name = Column(String, nullable=False)
-    name_ar = Column(String, nullable=False)
-
-    category = Column(String, nullable=False)
-
-    short_description = Column(Text)
-    overview = Column(Text)
-    history = Column(Text)
-    architecture = Column(Text)
-    details = Column(Text)
-    
-
-    built_year = Column(Integer)
-
-    dynasty = Column(String)
-
-    location = Column(String)
-    latitude = Column(Float)
-    longitude = Column(Float)
-
-    hero_image_url = Column(String)
-    thumbnail_url= Column(String)
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
+    name: Mapped[str] = mapped_column(String(255), nullable=False, unique=True, index=True)
+    name_ar: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    category: Mapped[str | None] = mapped_column(String(100), nullable=True)
+    short_description: Mapped[str | None] = mapped_column(Text, nullable=True)
+    story: Mapped[str | None] = mapped_column(Text, nullable=True)
+    built_year: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    dynasty: Mapped[str | None] = mapped_column(String(100), nullable=True)
+    location: Mapped[str | None] = mapped_column(Text, nullable=True)
+    image_url: Mapped[str | None] = mapped_column(String(500), nullable=True)
