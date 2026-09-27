@@ -1,13 +1,24 @@
-from sqlalchemy import Column, Integer, String
-from database.database import Base
+from sqlalchemy import Column, Integer, String, Text
+from backend.database import Base
 
 
 class Place(Base):
     __tablename__ = "places"
 
     id = Column(Integer, primary_key=True, index=True)
-    name_en = Column(String, nullable=False)
+
+    name = Column(String, nullable=False)
     name_ar = Column(String, nullable=False)
+
     category = Column(String, nullable=False)
-    year = Column(Integer, nullable=True)
-    slug = Column(String, unique=True, nullable=False)
+
+    short_description = Column(Text)
+    story = Column(Text)
+
+    built_year = Column(Integer)
+
+    dynasty = Column(String)
+
+    location = Column(String)
+
+    image_url = Column(String)
