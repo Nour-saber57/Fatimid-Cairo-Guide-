@@ -1,24 +1,22 @@
-from contextlib import asynccontextmanager
-from collections.abc import AsyncGenerator
+from fastapi import FastAPI, Depends
+from sqlalchemy.orm import Session
 
-from fastapi import FastAPI
-
-from database.database import Base, engine
-from routers.places import router as places_router
+from database.database import Base, engine, get_db
+from models.place import Place
 
 
-@asynccontextmanager
-async def lifespan(_: FastAPI) -> AsyncGenerator[None, None]:
-    Base.metadata.create_all(bind=engine)
-    yield
+app = FastAPI()
 
 
-app = FastAPI(lifespan=lifespan)
-
-
-app.include_router(places_router)
+Base.metadata.create_all(bind=engine)
 
 
 @app.get("/health")
-def health() -> dict[str, str]:
+def health():
     return {"status": "backend is healthy"}
+
+
+@app.get("/places")
+def get_places(db: Session = Depends(get_db)):
+    places = db.query(Place).all()
+    return places
