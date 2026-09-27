@@ -1,12 +1,20 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker,declarative_base
+from pathlib import Path
 
-DATABASE_URL = "sqlite:///./fatimid_cairo.db"
-engine = create_engine(
-    DATABASE_URL,
-    connect_args={"check_same_thread": False}
-)
+from sqlalchemy import URL, create_engine
+from sqlalchemy.orm import Session, declarative_base, sessionmaker
+from collections.abc import Generator
 
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+DATABASE_PATH = Path(__file__).resolve().parents[1] / "fatimid_cairo.db"
+DATABASE_URL = URL.create("sqlite", database=str(DATABASE_PATH))
+engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 
-Base=declarative_base()
+SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False)
+Base = declarative_base()
+
+
+def get_db() -> Generator[Session, None, None]:
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
