@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Text
-from backend.database import Base
+from database.database import Base
 
 
 class Place(Base):

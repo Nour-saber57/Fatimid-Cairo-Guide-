@@ -1,5 +1,5 @@
 from database.database import SessionLocal
-from backend.models.place import Place
+from models.place import Place
 
 
 db = SessionLocal()

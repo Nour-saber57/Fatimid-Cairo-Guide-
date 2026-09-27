@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 
 from database.database import get_db
 from models.place import Place
-from schemas import PlaceRead
+from schemas.places import PlaceRead
 
 
 router = APIRouter()
