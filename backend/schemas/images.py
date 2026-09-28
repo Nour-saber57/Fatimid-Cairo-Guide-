@@ -5,7 +5,7 @@ class ImageCreate(BaseModel):
     place_id: int
     image_url: str
 
-    caption: str | None = None
+    caption_en: str | None = None
     caption_ar: str | None = None
 
 
@@ -16,5 +16,5 @@ class ImageRead(BaseModel):
     place_id: int
     image_url: str
 
-    caption: str | None = None
+    caption_en: str | None = None
     caption_ar: str | None = None
