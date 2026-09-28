@@ -13,16 +13,16 @@ router = APIRouter()
 
 
 @router.get(
-    "/places/{place_slug}/features",
+    "/places/{place_id}/features",
     response_model=list[FeatureRead]
 )
 def get_features(
-    place_slug: str,
+    place_id: int,
     db: Annotated[Session, Depends(get_db)]
 ):
     return (
         db.query(Feature)
         .join(Place, Feature.place_id == Place.id)
-        .filter(Place.slug == place_slug)
+        .filter(Place.id == place_id)
         .all()
     )
