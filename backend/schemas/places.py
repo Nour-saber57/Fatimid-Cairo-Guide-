@@ -17,6 +17,10 @@ class PlaceCreate(BaseModel):
 
     dynasty: str | None = None
     location: str | None = None
+
+    latitude: float | None = None
+    longitude: float | None = None
+
     hero_image_url: str | None = None
     thumbnail_url: str | None = None
 
@@ -25,18 +29,25 @@ class PlaceRead(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
     id: int
+
     name: str
     name_ar: str
+
     category: str
+
     short_description: str | None = None
     overview: str | None = None
     history: str | None = None
     architecture: str | None = None
     details: str | None = None
+
     built_year: int | None = None
+
     dynasty: str | None = None
     location: str | None = None
+
     latitude: float | None = None
     longitude: float | None = None
+
     hero_image_url: str | None = None
     thumbnail_url: str | None = None
