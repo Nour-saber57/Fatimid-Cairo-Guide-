@@ -11,11 +11,6 @@ from sqlalchemy import or_
 
 router = APIRouter()
 
-
-@router.get("/places", response_model=list[PlaceRead])
-def get_places(db: Annotated[Session, Depends(get_db)]) -> list[Place]:
-    return db.query(Place).all()
-
 @router.get("/places/search/", response_model=list[PlaceRead])
 def search_places(
     q: str,

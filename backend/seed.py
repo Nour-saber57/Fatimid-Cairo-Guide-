@@ -8,53 +8,45 @@ place_data = dict(
     category="mosque",
 
     short_description=(
-        "A 12th-century Fatimid mosque on Al-Muizz Street, famous for its "
-        "richly carved stone façade and its ingenious adaptation to the "
-        "alignment of the historic street."
+        "A 12th-century Fatimid mosque on Al-Muizz Street, "
+        "known for its carved stone façade."
     ),
 
-    story=(
-        "Al-Aqmar Mosque was built in 519 AH / 1125 CE during the reign of "
-        "the Fatimid caliph al-Amir bi-Ahkam Allah. Its construction was "
-        "supervised by the powerful Fatimid vizier al-Ma'mun al-Bata'ihi. "
-        "The mosque stood close to the Fatimid caliphal palaces on the great "
-        "ceremonial avenue of medieval Cairo, the street now known as "
-        "Al-Muizz Street. "
+    overview=(
+        "Al-Aqmar Mosque is one of the most important surviving "
+        "Fatimid monuments in Historic Cairo."
+    ),
 
-        "One of the mosque's most important features is its stone façade, "
-        "which is among the oldest surviving decorated stone mosque façades "
-        "in Cairo. The façade contains elaborate carved decoration, Kufic "
-        "inscriptions, Qur'anic verses, medallions, and repeated references "
-        "to Muhammad and Ali. These decorations make the façade an important "
-        "example of Fatimid religious and architectural expression. "
+    history=(
+        "The mosque was built in 1125 CE during the reign of "
+        "the Fatimid caliph al-Amir bi-Ahkam Allah."
+    ),
 
-        "The mosque also demonstrates an ingenious architectural solution. "
-        "Al-Muizz Street does not run in exactly the same direction as the "
-        "qibla. Instead of allowing the mosque's façade to sit at an awkward "
-        "angle to the street, its designers aligned the exterior façade with "
-        "the street while arranging the interior prayer space toward Mecca. "
-        "As a result, the exterior and interior follow slightly different "
-        "orientations. "
+    architecture=(
+        "The mosque is notable for its decorated stone façade "
+        "and for aligning its exterior with Al-Muizz Street while "
+        "orienting the prayer hall toward the qibla."
+    ),
 
-        "The interior is organized around an open courtyard surrounded by "
-        "four arcades. The qibla arcade marks the direction of prayer. "
-        "Centuries after its Fatimid construction, the mosque underwent "
-        "renovation during the reign of the Mamluk Sultan Barquq in "
-        "799 AH / 1397 CE under Prince Yalbugha al-Salmi. "
-
-        "Today, Al-Aqmar Mosque remains one of the most significant surviving "
-        "monuments of Fatimid Cairo and an important stop along Al-Muizz "
-        "Street, revealing how architecture, urban planning, decoration, "
-        "religion, and Fatimid political culture came together in medieval Cairo."
+    details=(
+        "Its façade includes carved inscriptions, medallions, "
+        "and decorative Fatimid motifs."
     ),
 
     built_year=1125,
-
     dynasty="Fatimid",
 
     location="Al-Muizz Street, Historic Cairo, Cairo, Egypt",
 
-    image_url=(
+    latitude=30.0515,
+    longitude=31.2613,
+
+    hero_image_url=(
+        "https://commons.wikimedia.org/wiki/Special:Redirect/file/"
+        "Aqmar%20Mosque%202019.jpg"
+    ),
+
+    thumbnail_url=(
         "https://commons.wikimedia.org/wiki/Special:Redirect/file/"
         "Aqmar%20Mosque%202019.jpg"
     )
@@ -65,14 +57,26 @@ def seed_places() -> None:
     initialize_database()
 
     with SessionLocal() as db:
-        existing_place = db.query(Place).filter_by(name=place_data["name"]).first()
-        if existing_place is not None:
-            print(f"Already seeded: {existing_place.name}")
-            return
 
-        db.add(Place(**place_data))
+        existing_place = (
+            db.query(Place)
+            .filter(Place.name == place_data["name"])
+            .first()
+        )
+
+        if existing_place:
+            for key, value in place_data.items():
+                setattr(existing_place, key, value)
+
+            print(f"Updated: {existing_place.name}")
+
+        else:
+            new_place = Place(**place_data)
+            db.add(new_place)
+
+            print(f"Seeded: {place_data['name']}")
+
         db.commit()
-        print(f"Seeded: {place_data['name']}")
 
 
 if __name__ == "__main__":
