@@ -1,11 +1,11 @@
-from sqlalchemy import Column, Integer, String, Text, Float
+from sqlalchemy import Column, ForeignKey, Integer, String, Text, Float
 from database.database import Base
 
 class feature(Base):
     __tablename__ = "features"
 
     id = Column(Integer, primary_key=True, index=True)
-    place_id = Column(Integer, nullable=False)
+    place_id = Column(Integer,ForeignKey("places.id") ,nullable=False)
     title = Column(String, nullable=False)
     title_ar = Column(String, nullable=False)
     description = Column(Text, nullable=True)
