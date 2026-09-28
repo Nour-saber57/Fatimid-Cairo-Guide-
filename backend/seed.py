@@ -1,8 +1,19 @@
+from urllib.parse import quote
+
 from database.database import SessionLocal, initialize_database
-from models.place import Place
 from models.features import Feature
+from models.images import PlaceImage
+from models.place import Place
 
 BOOK_TITLE = "الشارع الأعظم - شارع المعز لدين الله"
+
+
+def commons_image(file_name: str) -> str:
+    """Return a Wikimedia Commons URL for a stored filename."""
+    return (
+        "https://commons.wikimedia.org/wiki/Special:FilePath/"
+        f"{quote(file_name)}"
+    )
 
 
 places_data = [
@@ -1866,6 +1877,8 @@ features_data = [
 
 def seed_places() -> None:
     initialize_database()
+    inserted = 0
+    updated = 0
 
     with SessionLocal() as db:
         for place_data in places_data:
@@ -1878,96 +1891,534 @@ def seed_places() -> None:
             if existing_place:
                 for key, value in place_data.items():
                     setattr(existing_place, key, value)
-                print(f"Updated: {existing_place.name_en}")
+                updated += 1
             else:
                 new_place = Place(**place_data)
                 db.add(new_place)
-                print(f"Seeded: {place_data['name_en']}")
+                inserted += 1
 
         db.commit()
 
+    print(f"Places: {inserted} inserted, {updated} updated")
+
+images_data = [
+
+    # =========================================================
+    # 1. BAB AL-FUTUH
+    # =========================================================
+
+    {
+        "place_slug": "bab-al-futuh",
+        "file_name": "Bab al-futuh in 2017, photo by Hatem Moushir 28.jpg",
+        "caption_en": "A modern exterior view of Bab al-Futuh and its rounded defensive towers.",
+        "caption_ar": "منظر حديث لباب الفتوح وبرجيه الدفاعيين المستديرين.",
+        "set_as_hero": True,
+    },
+
+    {
+        "place_slug": "bab-al-futuh",
+        "file_name": "Le Caire. Bab-el-Foutouh - Bonfils. LCCN2004668073.jpg",
+        "caption_en": "A historic view of Bab al-Futuh, preserving an earlier image of the northern gate.",
+        "caption_ar": "صورة تاريخية لباب الفتوح توثق هيئة البوابة الشمالية في فترة سابقة.",
+        "set_as_hero": False,
+    },
+
+    {
+        "place_slug": "bab-al-futuh",
+        "file_name": 'Egipto, 1882 "Bab-El-Futukh" (21444355011).jpg',
+        "caption_en": "A nineteenth-century view of Bab al-Futuh.",
+        "caption_ar": "منظر تاريخي لباب الفتوح من القرن التاسع عشر.",
+        "set_as_hero": False,
+    },
+
+
+    # =========================================================
+    # 2. AL-HAKIM MOSQUE
+    # =========================================================
+
+    {
+        "place_slug": "al-hakim-mosque",
+        "file_name": "Al Hakim Mosque at sunset.jpg",
+        "caption_en": "Al-Hakim Mosque at sunset.",
+        "caption_ar": "جامع الحاكم بأمر الله وقت الغروب.",
+        "set_as_hero": True,
+    },
+
+    {
+        "place_slug": "al-hakim-mosque",
+        "file_name": "Al Hakim Mosque Courtyard.jpg",
+        "caption_en": "The vast open courtyard at the heart of Al-Hakim Mosque.",
+        "caption_ar": "الصحن المكشوف الواسع في قلب جامع الحاكم بأمر الله.",
+        "set_as_hero": False,
+    },
+
+    {
+        "place_slug": "al-hakim-mosque",
+        "file_name": "Mosque of al-Hakim.jpg",
+        "caption_en": "Architectural view of the Mosque of al-Hakim bi-Amr Allah.",
+        "caption_ar": "منظر معماري لجامع الحاكم بأمر الله.",
+        "set_as_hero": False,
+    },
+
+
+    # =========================================================
+    # 3. AL-AQMAR MOSQUE
+    # =========================================================
+
+    {
+        "place_slug": "al-aqmar-mosque",
+        "file_name": "Al aqmar facade.jpg",
+        "caption_en": "The celebrated carved stone façade of Al-Aqmar Mosque.",
+        "caption_ar": "الواجهة الحجرية المنحوتة الشهيرة لجامع الأقمر.",
+        "set_as_hero": True,
+    },
+
+    {
+        "place_slug": "al-aqmar-mosque",
+        "file_name": "Al Aqmar Gate.jpg",
+        "caption_en": "The entrance of Al-Aqmar Mosque and its carved architectural decoration.",
+        "caption_ar": "مدخل جامع الأقمر وتفاصيل زخارفه المعمارية المحفورة.",
+        "set_as_hero": False,
+    },
+
+    {
+        "place_slug": "al-aqmar-mosque",
+        "file_name": "Al-Aqmar Mosque - entrance and minaret Cairo Egypt.jpg",
+        "caption_en": "The entrance and minaret of Al-Aqmar Mosque on Al-Muizz Street.",
+        "caption_ar": "مدخل ومئذنة جامع الأقمر في شارع المعز.",
+        "set_as_hero": False,
+    },
+
+
+    # =========================================================
+    # 4. ABD AL-RAHMAN KATKHUDA
+    # =========================================================
+
+    {
+        "place_slug": "abd-al-rahman-katkhuda-sabil-kuttab",
+        "file_name": "Cairo, sabil di abdel katkhuda 01.JPG",
+        "caption_en": "Street view of the Sabil-Kuttab of Abd al-Rahman Katkhuda.",
+        "caption_ar": "منظر من الشارع لسبيل وكتاب عبد الرحمن كتخدا.",
+        "set_as_hero": True,
+    },
+
+    {
+        "place_slug": "abd-al-rahman-katkhuda-sabil-kuttab",
+        "file_name": "Cairo, sabil di abdel katkhuda 02.JPG",
+        "caption_en": "Architectural details of the Sabil-Kuttab.",
+        "caption_ar": "تفاصيل معمارية من سبيل وكتاب عبد الرحمن كتخدا.",
+        "set_as_hero": False,
+    },
+
+    {
+        "place_slug": "abd-al-rahman-katkhuda-sabil-kuttab",
+        "file_name": "CairoSabilKatkhudhaAtNight.jpg",
+        "caption_en": "The Sabil-Kuttab illuminated at night.",
+        "caption_ar": "سبيل وكتاب عبد الرحمن كتخدا مضاءً ليلًا.",
+        "set_as_hero": False,
+    },
+
+
+    # =========================================================
+    # 5. AMIR BASHTAK PALACE
+    # =========================================================
+
+    {
+        "place_slug": "amir-bashtak-palace",
+        "file_name": "Bashtak palace exterior.jpg",
+        "caption_en": "The exterior façade of Amir Bashtak Palace.",
+        "caption_ar": "الواجهة الخارجية لقصر الأمير بشتاك.",
+        "set_as_hero": True,
+    },
+
+    {
+        "place_slug": "amir-bashtak-palace",
+        "file_name": "Bashtak palace reception hall ceiling.jpg",
+        "caption_en": "The richly decorated wooden ceiling of the palace reception hall.",
+        "caption_ar": "السقف الخشبي الغني بالزخارف في قاعة الاستقبال بالقصر.",
+        "set_as_hero": False,
+    },
+
+    {
+        "place_slug": "amir-bashtak-palace",
+        "file_name": "Bashtak palace reception hall fountain.jpg",
+        "caption_en": "The marble fountain inside the reception hall.",
+        "caption_ar": "الفسقية الرخامية داخل قاعة الاستقبال.",
+        "set_as_hero": False,
+    },
+
+
+    # =========================================================
+    # 6. AL-SALIH AYYUB
+    # =========================================================
+
+    {
+        "place_slug": "al-salih-najm-al-din-ayyub",
+        "file_name": "Mausoleum of Al-Saleh Nagm Al-Din Ayyub 001.jpg",
+        "caption_en": "The mausoleum of Sultan al-Salih Najm al-Din Ayyub.",
+        "caption_ar": "قبة وضريح السلطان الصالح نجم الدين أيوب.",
+        "set_as_hero": True,
+    },
+
+    {
+        "place_slug": "al-salih-najm-al-din-ayyub",
+        "file_name": "Mausoleum of Al-Saleh Nagm Al-Din Ayyub 002.jpg",
+        "caption_en": "Architectural detail from the mausoleum.",
+        "caption_ar": "تفصيل معماري من قبة الصالح نجم الدين أيوب.",
+        "set_as_hero": False,
+    },
+
+    {
+        "place_slug": "al-salih-najm-al-din-ayyub",
+        "file_name": "Mausoleum of as-Salih Nagm ad-Din Ayyub 02.jpg",
+        "caption_en": "Another view of the Ayyubid mausoleum on Al-Muizz Street.",
+        "caption_ar": "منظر آخر للقبة الأيوبية في شارع المعز.",
+        "set_as_hero": False,
+    },
+
+
+    # =========================================================
+    # 7. QALAWUN COMPLEX
+    # =========================================================
+
+    {
+        "place_slug": "qalawun-complex",
+        "file_name": "The Complex of Sultan Qalawun 03.jpg",
+        "caption_en": "The monumental façade of Sultan Qalawun's complex.",
+        "caption_ar": "الواجهة الضخمة لمجموعة السلطان قلاوون.",
+        "set_as_hero": True,
+    },
+
+    {
+        "place_slug": "qalawun-complex",
+        "file_name": "Complex of Sultan Al Mansur Qalawun 001.jpg",
+        "caption_en": "Architectural view of the Qalawun Complex at Bayn al-Qasrayn.",
+        "caption_ar": "منظر معماري لمجموعة قلاوون في بين القصرين.",
+        "set_as_hero": False,
+    },
+
+    {
+        "place_slug": "qalawun-complex",
+        "file_name": "Qalaun after restoration.jpg",
+        "caption_en": "The Qalawun Complex after restoration.",
+        "caption_ar": "مجموعة قلاوون بعد أعمال الترميم.",
+        "set_as_hero": False,
+    },
+
+
+    # =========================================================
+    # 8. AL-NASIR MUHAMMAD
+    # =========================================================
+
+    {
+        "place_slug": "al-nasir-muhammad-madrasa",
+        "file_name": "Madrassa of Al-Nasir Muhammad.jpg",
+        "caption_en": "The Madrasa of Sultan al-Nasir Muhammad.",
+        "caption_ar": "مدرسة السلطان الناصر محمد بن قلاوون.",
+        "set_as_hero": True,
+    },
+
+    {
+        "place_slug": "al-nasir-muhammad-madrasa",
+        "file_name": "Madrasa and Dome of Sultan Al Nassir Mohammed Ibn Qalawun 004.jpg",
+        "caption_en": "The madrasa and funerary architecture of al-Nasir Muhammad.",
+        "caption_ar": "المدرسة والعمارة الجنائزية للناصر محمد بن قلاوون.",
+        "set_as_hero": False,
+    },
+
+    {
+        "place_slug": "al-nasir-muhammad-madrasa",
+        "file_name": "Al Moez Street- Old Cairo- November 2014- Photo 17.JPG",
+        "caption_en": "The madrasa within the monumental streetscape of Al-Muizz.",
+        "caption_ar": "المدرسة ضمن المشهد المعماري لشارع المعز.",
+        "set_as_hero": False,
+    },
+
+
+    # =========================================================
+    # 9. SULTAN BARQUQ
+    # =========================================================
+
+    {
+        "place_slug": "sultan-barquq-madrasa-khanqah",
+        "file_name": "Mosque-Madrassa of Sultan Barquq 2019.jpg",
+        "caption_en": "The monumental Mosque-Madrasa of Sultan Barquq.",
+        "caption_ar": "مسجد ومدرسة السلطان الظاهر برقوق.",
+        "set_as_hero": True,
+    },
+
+    {
+        "place_slug": "sultan-barquq-madrasa-khanqah",
+        "file_name": "Mosque, Khanqah and Mausoleum of Al SultanAl Zahir Barquq 001.jpg",
+        "caption_en": "View of the mosque, khanqah and mausoleum complex.",
+        "caption_ar": "منظر لمجموعة المسجد والخانقاه والقبة الضريحية للظاهر برقوق.",
+        "set_as_hero": False,
+    },
+
+    {
+        "place_slug": "sultan-barquq-madrasa-khanqah",
+        "file_name": "Barquq-Komplex 2015-11-12a.jpg",
+        "caption_en": "Architectural details of Sultan Barquq's complex.",
+        "caption_ar": "تفاصيل معمارية من مجموعة السلطان الظاهر برقوق.",
+        "set_as_hero": False,
+    },
+
+
+    # =========================================================
+    # 10. HAMMAM INAL
+    # =========================================================
+
+    {
+        "place_slug": "hammam-sultan-inal",
+        "file_name": "Hamam Inal (1).JPG",
+        "caption_en": "The historic Hammam of Sultan Inal.",
+        "caption_ar": "حمام السلطان إينال التاريخي.",
+        "set_as_hero": True,
+    },
+
+    {
+        "place_slug": "hammam-sultan-inal",
+        "file_name": "Cairo, hamman inal, interno 01.JPG",
+        "caption_en": "An interior bathing chamber of Hammam Inal.",
+        "caption_ar": "إحدى حجرات الاستحمام الداخلية في حمام إينال.",
+        "set_as_hero": False,
+    },
+
+    {
+        "place_slug": "hammam-sultan-inal",
+        "file_name": "Cairo, hamman inal, interno 02.JPG",
+        "caption_en": "Interior architectural spaces of the Mamluk bathhouse.",
+        "caption_ar": "المساحات المعمارية الداخلية للحمام المملوكي.",
+        "set_as_hero": False,
+    },
+
+
+    # =========================================================
+    # 11. AL-GHURI COMPLEX
+    # =========================================================
+
+    {
+        "place_slug": "sultan-al-ghuri-complex",
+        "file_name": "Al-Ghuri Complex 2022.jpg",
+        "caption_en": "The Sultan al-Ghuri Complex and its dramatic urban setting.",
+        "caption_ar": "مجموعة السلطان الغوري وموقعها المميز داخل الشارع.",
+        "set_as_hero": True,
+    },
+
+    {
+        "place_slug": "sultan-al-ghuri-complex",
+        "file_name": "Al-Ghuri 2019-11-02a.jpg",
+        "caption_en": "Architectural view of the late-Mamluk complex.",
+        "caption_ar": "منظر معماري لمجموعة الغوري من أواخر العصر المملوكي.",
+        "set_as_hero": False,
+    },
+
+    {
+        "place_slug": "sultan-al-ghuri-complex",
+        "file_name": "Al-Ghuri madrasa DSCF8631.jpg",
+        "caption_en": "The madrasa section of Sultan al-Ghuri's foundation.",
+        "caption_ar": "جزء المدرسة من مجموعة السلطان الغوري.",
+        "set_as_hero": False,
+    },
+
+
+    # =========================================================
+    # 12. AL-MU'AYYAD SHAYKH
+    # =========================================================
+
+    {
+        "place_slug": "al-muayyad-shaykh-mosque",
+        "file_name": "Sultan Al-Moayed Mosque, Cairo (15335285521).jpg",
+        "caption_en": "The Mosque of Sultan al-Mu'ayyad Shaykh near Bab Zuwayla.",
+        "caption_ar": "جامع السلطان المؤيد شيخ بالقرب من باب زويلة.",
+        "set_as_hero": True,
+    },
+
+    {
+        "place_slug": "al-muayyad-shaykh-mosque",
+        "file_name": "Cairo, Egypt (52663538335).jpg",
+        "caption_en": "A modern view of Sultan al-Mu'ayyad's mosque.",
+        "caption_ar": "منظر حديث لجامع السلطان المؤيد شيخ.",
+        "set_as_hero": False,
+    },
+
+    {
+        "place_slug": "al-muayyad-shaykh-mosque",
+        "file_name": "The Dome of El Moaiyad (Muayyad) from Bab Zuweyleh (Zuwailah), Cairo. (1907) - TIMEA.jpg",
+        "caption_en": "A historic view of the mosque and Bab Zuwayla from 1907.",
+        "caption_ar": "منظر تاريخي للجامع وباب زويلة يعود إلى عام 1907.",
+        "set_as_hero": False,
+    },
+
+
+    # =========================================================
+    # 13. NAFISA AL-BAYDA
+    # =========================================================
+
+    {
+        "place_slug": "nafisa-al-bayda-sabil-kuttab",
+        "file_name": "Sabil and Kuttab of Nafisa al-Bayda.jpg",
+        "caption_en": "The elegant façade of the Sabil-Kuttab of Nafisa al-Bayda.",
+        "caption_ar": "الواجهة الأنيقة لسبيل وكتاب نفيسة البيضا.",
+        "set_as_hero": True,
+    },
+
+    {
+        "place_slug": "nafisa-al-bayda-sabil-kuttab",
+        "file_name": "Nafisa Al Bayda Sabil 01.jpg",
+        "caption_en": "Architectural view of the Ottoman sabil.",
+        "caption_ar": "منظر معماري للسبيل العثماني.",
+        "set_as_hero": False,
+    },
+
+    {
+        "place_slug": "nafisa-al-bayda-sabil-kuttab",
+        "file_name": "Cairo, bab zuweila, antica fontana pubblica.JPG",
+        "caption_en": "The historic public fountain near Bab Zuwayla.",
+        "caption_ar": "السبيل التاريخي بالقرب من باب زويلة.",
+        "set_as_hero": False,
+    },
+
+
+    # =========================================================
+    # 14. BAB ZUWAYLA
+    # =========================================================
+
+    {
+        "place_slug": "bab-zuwayla",
+        "file_name": "Al - Moayad Sheikh Mosque - Minarets - Bab Zewila.jpg",
+        "caption_en": "Bab Zuwayla crowned by the twin minarets of al-Mu'ayyad Shaykh.",
+        "caption_ar": "باب زويلة تعلوه مئذنتا جامع المؤيد شيخ.",
+        "set_as_hero": True,
+    },
+
+    {
+        "place_slug": "bab-zuwayla",
+        "file_name": "Bab Zuwayla Cairo 12 0864.jpg",
+        "caption_en": "The massive Fatimid gateway of Bab Zuwayla.",
+        "caption_ar": "البوابة الفاطمية الضخمة لباب زويلة.",
+        "set_as_hero": False,
+    },
+
+    {
+        "place_slug": "bab-zuwayla",
+        "file_name": "Bab Zuwayla DSCF9284.jpg",
+        "caption_en": "Architectural details of Bab Zuwayla.",
+        "caption_ar": "تفاصيل معمارية من باب زويلة.",
+        "set_as_hero": False,
+    },
+]
+
 
 def seed_features() -> None:
+    initialize_database()
+    inserted = 0
+    updated = 0
+    skipped = 0
 
     with SessionLocal() as db:
-
         for feature_data in features_data:
-
             place = (
                 db.query(Place)
-                .filter(
-                    Place.slug == feature_data["place_slug"]
-                )
+                .filter(Place.slug == feature_data["place_slug"])
                 .first()
             )
 
             if place is None:
-                print(
-                    f"Place not found: "
-                    f"{feature_data['place_slug']}"
-                )
+                skipped += 1
                 continue
 
             existing_feature = (
                 db.query(Feature)
                 .filter(
                     Feature.place_id == place.id,
-                    Feature.title_en == feature_data["title_en"]
+                    Feature.title_en == feature_data["title_en"],
                 )
                 .first()
             )
 
             if existing_feature:
-
-                existing_feature.title_ar = (
-                    feature_data["title_ar"]
-                )
-
-                existing_feature.description_en = (
-                    feature_data["description_en"]
-                )
-
-                existing_feature.description_ar = (
-                    feature_data["description_ar"]
-                )
-
-                existing_feature.image_url = (
-                    feature_data["image_url"]
-                )
-
-                print(
-                    f"Updated feature: "
-                    f"{feature_data['title_en']}"
-                )
-
+                existing_feature.title_ar = feature_data["title_ar"]
+                existing_feature.description_en = feature_data["description_en"]
+                existing_feature.description_ar = feature_data["description_ar"]
+                existing_feature.image_url = feature_data["image_url"]
+                updated += 1
             else:
-
                 new_feature = Feature(
                     place_id=place.id,
-
                     title_en=feature_data["title_en"],
                     title_ar=feature_data["title_ar"],
-
                     description_en=feature_data["description_en"],
                     description_ar=feature_data["description_ar"],
-
                     image_url=feature_data["image_url"],
                 )
-
                 db.add(new_feature)
+                inserted += 1
 
-                print(
-                    f"Seeded feature: "
-                    f"{feature_data['title_en']}"
+        db.commit()
+
+    print(
+        f"Features: {inserted} inserted, {updated} updated, "
+        f"{skipped} skipped (place not found)"
+    )
+
+
+def seed_images() -> None:
+    initialize_database()
+    inserted = 0
+    updated = 0
+    skipped = 0
+
+    with SessionLocal() as db:
+        for image_data in images_data:
+            place = (
+                db.query(Place)
+                .filter(Place.slug == image_data["place_slug"])
+                .first()
+            )
+
+            if place is None:
+                skipped += 1
+                continue
+
+            image_url = commons_image(image_data["file_name"])
+
+            existing_image = (
+                db.query(PlaceImage)
+                .filter(
+                    PlaceImage.place_id == place.id,
+                    PlaceImage.image_url == image_url,
                 )
+                .first()
+            )
+
+            if existing_image:
+                existing_image.caption_en = image_data["caption_en"]
+                existing_image.caption_ar = image_data["caption_ar"]
+                updated += 1
+            else:
+                new_image = PlaceImage(
+                    place_id=place.id,
+                    image_url=image_url,
+                    caption_en=image_data["caption_en"],
+                    caption_ar=image_data["caption_ar"],
+                )
+                db.add(new_image)
+                inserted += 1
+
+            if image_data["set_as_hero"]:
+                place.hero_image_url = image_url
+                place.thumbnail_url = image_url
 
         db.commit()
 
-        db.add(new_feature)
-        db.commit()
-        print("Feature added successfully")
+    print(
+        f"Images: {inserted} inserted, {updated} updated, "
+        f"{skipped} skipped (place not found)"
+    )
 
 
 if __name__ == "__main__":
     seed_places()
     seed_features()
+    seed_images()
