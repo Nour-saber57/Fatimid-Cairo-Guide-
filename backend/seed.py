@@ -1244,6 +1244,48 @@ places_data = [
     },
 ]
 
+COORDINATES = {
+    "bab-al-futuh": (30.055400, 31.263430),
+
+    "al-hakim-mosque": (30.054400, 31.263850),
+
+    "al-aqmar-mosque": (30.051529, 31.262013),
+
+    "abd-al-rahman-katkhuda-sabil-kuttab":
+        (30.050683, 31.261550),
+
+    "amir-bashtak-palace":
+        (30.050389, 31.261611),
+
+    "al-salih-najm-al-din-ayyub":
+        (30.049135, 31.261320),
+
+    "qalawun-complex":
+        (30.049528, 31.260972),
+
+    "al-nasir-muhammad-madrasa":
+        (30.049750, 31.261064),
+
+    "sultan-barquq-madrasa-khanqah":
+        (30.050278, 31.261389),
+
+    "hammam-sultan-inal":
+        (30.050561, 31.261161),
+
+    "sultan-al-ghuri-complex":
+        (30.046111, 31.260000),
+
+    "al-muayyad-shaykh-mosque":
+        (30.043056, 31.257500),
+
+    "nafisa-al-bayda-sabil-kuttab":
+        (30.043030, 31.257960),
+
+    "bab-zuwayla":
+        (30.042790, 31.257780),
+}
+
+
 features_data = [
 
     # =========================================================
@@ -1882,6 +1924,12 @@ def seed_places() -> None:
 
     with SessionLocal() as db:
         for place_data in places_data:
+            coordinates = COORDINATES.get(place_data["slug"])
+
+            if coordinates:
+                place_data["latitude"] = coordinates[0]
+                place_data["longitude"] = coordinates[1]
+
             existing_place = (
                 db.query(Place)
                 .filter(Place.slug == place_data["slug"])
