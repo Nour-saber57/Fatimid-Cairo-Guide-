@@ -6,7 +6,7 @@ from database.database import Base
 class PlaceImage(Base):
     __tablename__ = "images"
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True)
 
     place_id = Column(
         Integer,
@@ -16,5 +16,5 @@ class PlaceImage(Base):
 
     image_url = Column(String, nullable=False)
 
-    caption = Column(String)
+    caption_en = Column(String)
     caption_ar = Column(String)
