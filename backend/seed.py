@@ -1,6 +1,6 @@
 from database.database import SessionLocal, initialize_database
 from models.place import Place
-
+from models.features import Feature
 
 BOOK_TITLE = "الشارع الأعظم - شارع المعز لدين الله"
 
@@ -1233,14 +1233,29 @@ places_data = [
     },
 ]
 
+feature_data = {
+    "place_slug": "al-aqmar-mosque",
+
+    "title_en": "Carved Stone Façade",
+    "title_ar": "الواجهة الحجرية المنحوتة",
+
+    "description_en":
+        "The façade is one of the mosque's most distinctive "
+        "architectural features.",
+
+    "description_ar":
+        "تعد الواجهة الحجرية المنحوتة من أبرز العناصر "
+        "المعمارية في جامع الأقمر.",
+
+    "image_url": None
+}
+
 
 def seed_places() -> None:
     initialize_database()
 
     with SessionLocal() as db:
-
         for place_data in places_data:
-
             existing_place = (
                 db.query(Place)
                 .filter(Place.slug == place_data["slug"])
@@ -1248,22 +1263,43 @@ def seed_places() -> None:
             )
 
             if existing_place:
-
                 for key, value in place_data.items():
                     setattr(existing_place, key, value)
-
                 print(f"Updated: {existing_place.name_en}")
-
             else:
-
                 new_place = Place(**place_data)
-
                 db.add(new_place)
-
                 print(f"Seeded: {place_data['name_en']}")
 
         db.commit()
 
 
+def seed_feature() -> None:
+    with SessionLocal() as db:
+        place = (
+            db.query(Place)
+            .filter(Place.slug == feature_data["place_slug"])
+            .first()
+        )
+
+        if place is None:
+            print("Place not found")
+            return
+
+        new_feature = Feature(
+            place_id=place.id,
+            title_en=feature_data["title_en"],
+            title_ar=feature_data["title_ar"],
+            description_en=feature_data["description_en"],
+            description_ar=feature_data["description_ar"],
+            image_url=feature_data["image_url"],
+        )
+
+        db.add(new_feature)
+        db.commit()
+        print("Feature added successfully")
+
+
 if __name__ == "__main__":
     seed_places()
+    seed_feature()
