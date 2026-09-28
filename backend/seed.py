@@ -1233,23 +1233,636 @@ places_data = [
     },
 ]
 
-feature_data = {
-    "place_slug": "al-aqmar-mosque",
+features_data = [
 
-    "title_en": "Carved Stone Façade",
-    "title_ar": "الواجهة الحجرية المنحوتة",
+    # =========================================================
+    # 1. BAB AL-FUTUH
+    # =========================================================
 
-    "description_en":
-        "The façade is one of the mosque's most distinctive "
-        "architectural features.",
+    {
+        "place_slug": "bab-al-futuh",
+        "title_en": "Twin Defensive Towers",
+        "title_ar": "البرجان الدفاعيان",
+        "description_en":
+            "Two massive rounded stone towers frame the entrance "
+            "and give Bab al-Futuh its fortified character.",
+        "description_ar":
+            "يحيط بمدخل باب الفتوح برجان حجريان ضخمان مستديران "
+            "يمنحان البوابة طابعها الدفاعي.",
+        "image_url": None,
+    },
 
-    "description_ar":
-        "تعد الواجهة الحجرية المنحوتة من أبرز العناصر "
-        "المعمارية في جامع الأقمر.",
+    {
+        "place_slug": "bab-al-futuh",
+        "title_en": "Central Gateway",
+        "title_ar": "الممر المركزي",
+        "description_en":
+            "The gateway passes between the two towers and forms "
+            "the monumental northern entrance into historic Cairo.",
+        "description_ar":
+            "يمر المدخل بين البرجين ويشكل بوابة ضخمة للدخول "
+            "إلى القاهرة التاريخية من الشمال.",
+        "image_url": None,
+    },
 
-    "image_url": None
-}
+    {
+        "place_slug": "bab-al-futuh",
+        "title_en": "Stone Fortifications",
+        "title_ar": "التحصينات الحجرية",
+        "description_en":
+            "The gate is integrated into the heavy stone defensive "
+            "walls of Fatimid Cairo.",
+        "description_ar":
+            "يرتبط الباب بالأسوار والتحصينات الحجرية الضخمة "
+            "للقاهرة الفاطمية.",
+        "image_url": None,
+    },
 
+
+    # =========================================================
+    # 2. AL-HAKIM MOSQUE
+    # =========================================================
+
+    {
+        "place_slug": "al-hakim-mosque",
+        "title_en": "Great Courtyard",
+        "title_ar": "الصحن الكبير",
+        "description_en":
+            "A vast open courtyard forms the heart of the mosque "
+            "and is surrounded by arcaded prayer spaces.",
+        "description_ar":
+            "يشكل الصحن المكشوف الواسع قلب الجامع، "
+            "وتحيط به الأروقة من جوانبه.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "al-hakim-mosque",
+        "title_en": "Arcaded Prayer Halls",
+        "title_ar": "أروقة الصلاة",
+        "description_en":
+            "Rows of arches and columns surround the courtyard "
+            "and organize the large interior space.",
+        "description_ar":
+            "تحيط بالصحن صفوف من العقود والأعمدة "
+            "التي تنظم المساحات الداخلية للجامع.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "al-hakim-mosque",
+        "title_en": "Mihrab",
+        "title_ar": "المحراب",
+        "description_en":
+            "The prayer direction is marked by a richly treated "
+            "mihrab within the qibla wall.",
+        "description_ar":
+            "يتحدد اتجاه الصلاة من خلال محراب بارز "
+            "داخل جدار القبلة.",
+        "image_url": None,
+    },
+
+
+    # =========================================================
+    # 3. AL-AQMAR MOSQUE
+    # =========================================================
+
+    {
+        "place_slug": "al-aqmar-mosque",
+        "title_en": "Carved Stone Façade",
+        "title_ar": "الواجهة الحجرية المنحوتة",
+        "description_en":
+            "The street façade is covered with finely carved "
+            "stone decoration and inscriptions.",
+        "description_ar":
+            "تغطي الواجهة المطلة على الشارع زخارف وكتابات "
+            "حجرية منحوتة بدقة.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "al-aqmar-mosque",
+        "title_en": "Radiating Medallions",
+        "title_ar": "الجامات والزخارف المشعة",
+        "description_en":
+            "Circular medallions and radiating carved patterns "
+            "are among the façade's most recognizable details.",
+        "description_ar":
+            "تعد الجامات الدائرية والزخارف الحجرية المشعة "
+            "من أبرز تفاصيل واجهة الجامع.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "al-aqmar-mosque",
+        "title_en": "Central Courtyard",
+        "title_ar": "الصحن الأوسط",
+        "description_en":
+            "The mosque is organized around a compact open "
+            "courtyard surrounded by arcades.",
+        "description_ar":
+            "ينظم الجامع حول صحن أوسط مكشوف "
+            "تحيط به الأروقة.",
+        "image_url": None,
+    },
+
+
+    # =========================================================
+    # 4. ABD AL-RAHMAN KATKHUDA
+    # =========================================================
+
+    {
+        "place_slug": "abd-al-rahman-katkhuda-sabil-kuttab",
+        "title_en": "Sabil Chamber",
+        "title_ar": "حجرة السبيل",
+        "description_en":
+            "The lower level contains the sabil, where drinking "
+            "water was distributed to people passing through the street.",
+        "description_ar":
+            "يضم المستوى السفلي حجرة السبيل التي خصصت "
+            "لتوفير مياه الشرب للمارة.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "abd-al-rahman-katkhuda-sabil-kuttab",
+        "title_en": "Kuttab Loggia",
+        "title_ar": "الكتاب العلوي",
+        "description_en":
+            "Above the sabil is an open kuttab level used "
+            "for children's education.",
+        "description_ar":
+            "يقع فوق السبيل كتاب مفتوح كان يستخدم "
+            "لتعليم الأطفال.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "abd-al-rahman-katkhuda-sabil-kuttab",
+        "title_en": "Decorated Window Screens",
+        "title_ar": "شبابيك السبيل المزخرفة",
+        "description_en":
+            "Decorative metal window screens distinguish "
+            "the curved street-facing façade.",
+        "description_ar":
+            "تتميز واجهة السبيل المطلة على الشارع "
+            "بشبابيك معدنية مزخرفة.",
+        "image_url": None,
+    },
+
+
+    # =========================================================
+    # 5. AMIR BASHTAK PALACE
+    # =========================================================
+
+    {
+        "place_slug": "amir-bashtak-palace",
+        "title_en": "Grand Reception Hall",
+        "title_ar": "قاعة الاستقبال الكبرى",
+        "description_en":
+            "A tall reception hall forms one of the principal "
+            "interior spaces of the palace.",
+        "description_ar":
+            "تمثل قاعة الاستقبال المرتفعة أحد أهم "
+            "الفراغات الداخلية في القصر.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "amir-bashtak-palace",
+        "title_en": "Decorated Wooden Ceiling",
+        "title_ar": "السقف الخشبي المزخرف",
+        "description_en":
+            "The palace preserves richly decorated wooden "
+            "ceilings above its principal spaces.",
+        "description_ar":
+            "يحتفظ القصر بأسقف خشبية غنية "
+            "بالزخارف فوق قاعاته الرئيسية.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "amir-bashtak-palace",
+        "title_en": "Interior Arches",
+        "title_ar": "العقود الداخلية",
+        "description_en":
+            "Large arches divide and frame the palace's "
+            "main interior spaces.",
+        "description_ar":
+            "تستخدم العقود الكبيرة في تحديد وتقسيم "
+            "المساحات الرئيسية داخل القصر.",
+        "image_url": None,
+    },
+
+
+    # =========================================================
+    # 6. AL-SALIH AYYUB
+    # =========================================================
+
+    {
+        "place_slug": "al-salih-najm-al-din-ayyub",
+        "title_en": "Mausoleum Dome",
+        "title_ar": "القبة الضريحية",
+        "description_en":
+            "The mausoleum is crowned by a prominent dome "
+            "that marks the burial chamber.",
+        "description_ar":
+            "تغطي حجرة الدفن قبة بارزة "
+            "تميز الجزء الضريحي من المنشأة.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "al-salih-najm-al-din-ayyub",
+        "title_en": "Burial Chamber",
+        "title_ar": "حجرة الدفن",
+        "description_en":
+            "The interior contains the funerary space "
+            "associated with Sultan al-Salih Ayyub.",
+        "description_ar":
+            "يضم الداخل الحجرة الجنائزية المرتبطة "
+            "بالسلطان الصالح أيوب.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "al-salih-najm-al-din-ayyub",
+        "title_en": "Mihrab",
+        "title_ar": "المحراب",
+        "description_en":
+            "A decorated mihrab marks the direction of prayer "
+            "inside the mausoleum.",
+        "description_ar":
+            "يحدد محراب مزخرف اتجاه الصلاة "
+            "داخل القبة الضريحية.",
+        "image_url": None,
+    },
+
+
+    # =========================================================
+    # 7. QALAWUN COMPLEX
+    # =========================================================
+
+    {
+        "place_slug": "qalawun-complex",
+        "title_en": "Monumental Street Façade",
+        "title_ar": "الواجهة الضخمة المطلة على الشارع",
+        "description_en":
+            "A long monumental façade defines the complex "
+            "along Bayn al-Qasrayn.",
+        "description_ar":
+            "تمتد واجهة ضخمة للمجموعة على منطقة "
+            "بين القصرين وتحدد حضورها في الشارع.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "qalawun-complex",
+        "title_en": "Mausoleum",
+        "title_ar": "القبة الضريحية",
+        "description_en":
+            "The mausoleum is one of the principal components "
+            "of the complex and contains an elaborate interior.",
+        "description_ar":
+            "تعد القبة الضريحية أحد العناصر الرئيسية "
+            "للمجموعة وتتميز بداخل غني بالتفاصيل.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "qalawun-complex",
+        "title_en": "Minaret",
+        "title_ar": "المئذنة",
+        "description_en":
+            "The complex's minaret rises above the dense "
+            "architectural fabric of Al-Muizz Street.",
+        "description_ar":
+            "ترتفع مئذنة المجموعة فوق النسيج "
+            "العمراني الكثيف لشارع المعز.",
+        "image_url": None,
+    },
+
+
+    # =========================================================
+    # 8. AL-NASIR MUHAMMAD
+    # =========================================================
+
+    {
+        "place_slug": "al-nasir-muhammad-madrasa",
+        "title_en": "Monumental Portal",
+        "title_ar": "المدخل التذكاري",
+        "description_en":
+            "A prominent entrance portal announces the madrasa "
+            "from the street.",
+        "description_ar":
+            "يبرز مدخل ضخم للمدرسة "
+            "على واجهتها المطلة على الشارع.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "al-nasir-muhammad-madrasa",
+        "title_en": "Courtyard",
+        "title_ar": "الصحن",
+        "description_en":
+            "The interior is organized around an open courtyard "
+            "linked to the teaching and prayer spaces.",
+        "description_ar":
+            "ينظم المبنى حول صحن مكشوف "
+            "ترتبط به مساحات التعليم والصلاة.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "al-nasir-muhammad-madrasa",
+        "title_en": "Decorated Wooden Elements",
+        "title_ar": "العناصر الخشبية المزخرفة",
+        "description_en":
+            "The monument preserves detailed wooden decoration "
+            "in several interior architectural elements.",
+        "description_ar":
+            "تظهر داخل المبنى عناصر خشبية "
+            "ذات زخارف دقيقة.",
+        "image_url": None,
+    },
+
+
+    # =========================================================
+    # 9. SULTAN BARQUQ
+    # =========================================================
+
+    {
+        "place_slug": "sultan-barquq-madrasa-khanqah",
+        "title_en": "Striped Stone Façade",
+        "title_ar": "الواجهة الحجرية ذات الأشرطة",
+        "description_en":
+            "The exterior uses alternating stone bands that "
+            "give the façade a strong visual rhythm.",
+        "description_ar":
+            "تستخدم الواجهة أشرطة حجرية متعاقبة "
+            "تمنحها إيقاعًا بصريًا واضحًا.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "sultan-barquq-madrasa-khanqah",
+        "title_en": "Decorated Wooden Ceiling",
+        "title_ar": "السقف الخشبي المزخرف",
+        "description_en":
+            "Richly painted and decorated wooden ceilings "
+            "survive within the complex.",
+        "description_ar":
+            "تحتفظ المجموعة بأسقف خشبية "
+            "ملونة وغنية بالزخارف.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "sultan-barquq-madrasa-khanqah",
+        "title_en": "Minaret",
+        "title_ar": "المئذنة",
+        "description_en":
+            "The tall minaret forms an important vertical "
+            "element in the street skyline.",
+        "description_ar":
+            "تشكل المئذنة المرتفعة عنصرًا رأسيًا "
+            "بارزًا في خط سماء شارع المعز.",
+        "image_url": None,
+    },
+
+
+    # =========================================================
+    # 10. HAMMAM INAL
+    # =========================================================
+
+    {
+        "place_slug": "hammam-sultan-inal",
+        "title_en": "Domed Bathing Chamber",
+        "title_ar": "قاعة الاستحمام المقببة",
+        "description_en":
+            "One of the main bathing spaces is covered by "
+            "a rounded dome.",
+        "description_ar":
+            "تغطي إحدى قاعات الاستحمام الرئيسية "
+            "قبة مستديرة.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "hammam-sultan-inal",
+        "title_en": "Roof Light Openings",
+        "title_ar": "فتحات الإضاءة في القبة",
+        "description_en":
+            "Small openings in the dome allow filtered "
+            "light into the bathing space.",
+        "description_ar":
+            "تسمح الفتحات الصغيرة في القبة "
+            "بدخول الضوء إلى قاعة الحمام.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "hammam-sultan-inal",
+        "title_en": "Bathing Rooms",
+        "title_ar": "غرف الحمام",
+        "description_en":
+            "The hammam is composed of a sequence of enclosed "
+            "spaces serving the bathing process.",
+        "description_ar":
+            "يتكون الحمام من مجموعة من الحجرات "
+            "المتتابعة المخصصة لعملية الاستحمام.",
+        "image_url": None,
+    },
+
+
+    # =========================================================
+    # 11. AL-GHURI COMPLEX
+    # =========================================================
+
+    {
+        "place_slug": "sultan-al-ghuri-complex",
+        "title_en": "Muqarnas Portal",
+        "title_ar": "المدخل ذو المقرنصات",
+        "description_en":
+            "The monumental entrance is emphasized by deep "
+            "muqarnas decoration above the doorway.",
+        "description_ar":
+            "يتميز المدخل الضخم بزخارف المقرنصات "
+            "العميقة أعلى فتحة الدخول.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "sultan-al-ghuri-complex",
+        "title_en": "Minaret",
+        "title_ar": "المئذنة",
+        "description_en":
+            "The highly visible minaret rises above "
+            "the southern section of Al-Muizz Street.",
+        "description_ar":
+            "ترتفع مئذنة المجموعة بشكل واضح "
+            "فوق الجزء الجنوبي من شارع المعز.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "sultan-al-ghuri-complex",
+        "title_en": "Mihrab and Minbar",
+        "title_ar": "المحراب والمنبر",
+        "description_en":
+            "The prayer interior includes an elaborate "
+            "mihrab and wooden minbar.",
+        "description_ar":
+            "تضم مساحة الصلاة محرابًا غنيًا "
+            "بالتفاصيل ومنبرًا خشبيًا.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "sultan-al-ghuri-complex",
+        "title_en": "Sabil-Kuttab Wing",
+        "title_ar": "جناح السبيل والكتاب",
+        "description_en":
+            "The complex also includes a charitable sabil "
+            "and an upper kuttab overlooking the street.",
+        "description_ar":
+            "تضم المجموعة أيضًا سبيلًا خيريًا "
+            "وكتابًا علويًا يطل على الشارع.",
+        "image_url": None,
+    },
+
+
+    # =========================================================
+    # 12. AL-MU'AYYAD SHAYKH
+    # =========================================================
+
+    {
+        "place_slug": "al-muayyad-shaykh-mosque",
+        "title_en": "Twin Minarets",
+        "title_ar": "المئذنتان",
+        "description_en":
+            "Two Mamluk minarets rise above the towers "
+            "of Bab Zuwayla.",
+        "description_ar":
+            "ترتفع مئذنتان مملوكيتان فوق "
+            "برجي باب زويلة.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "al-muayyad-shaykh-mosque",
+        "title_en": "Arcaded Courtyard",
+        "title_ar": "الصحن المحاط بالأروقة",
+        "description_en":
+            "The mosque contains a central courtyard "
+            "surrounded by arcaded spaces.",
+        "description_ar":
+            "يحتوي الجامع على صحن مركزي "
+            "تحيط به الأروقة.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "al-muayyad-shaykh-mosque",
+        "title_en": "Monumental Entrance",
+        "title_ar": "المدخل الضخم",
+        "description_en":
+            "A large decorated entrance announces the mosque "
+            "within the dense southern part of the street.",
+        "description_ar":
+            "يظهر للجامع مدخل كبير مزخرف "
+            "وسط النسيج العمراني الكثيف للمنطقة.",
+        "image_url": None,
+    },
+
+
+    # =========================================================
+    # 13. NAFISA AL-BAYDA
+    # =========================================================
+
+    {
+        "place_slug": "nafisa-al-bayda-sabil-kuttab",
+        "title_en": "Rounded Sabil Façade",
+        "title_ar": "واجهة السبيل المستديرة",
+        "description_en":
+            "The lower sabil projects toward the street "
+            "with a curved façade.",
+        "description_ar":
+            "يبرز الجزء السفلي للسبيل نحو الشارع "
+            "بواجهة منحنية.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "nafisa-al-bayda-sabil-kuttab",
+        "title_en": "Decorative Window Grilles",
+        "title_ar": "الشبابيك المعدنية المزخرفة",
+        "description_en":
+            "Large decorative grilles cover the windows "
+            "of the sabil chamber.",
+        "description_ar":
+            "تغطي شبابيك حجرة السبيل "
+            "حواجز معدنية كبيرة مزخرفة.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "nafisa-al-bayda-sabil-kuttab",
+        "title_en": "Upper Kuttab",
+        "title_ar": "الكتاب العلوي",
+        "description_en":
+            "An upper open level forms the kuttab "
+            "above the water fountain.",
+        "description_ar":
+            "يقع الكتاب في مستوى علوي مفتوح "
+            "فوق حجرة السبيل.",
+        "image_url": None,
+    },
+
+
+    # =========================================================
+    # 14. BAB ZUWAYLA
+    # =========================================================
+
+    {
+        "place_slug": "bab-zuwayla",
+        "title_en": "Twin Rounded Towers",
+        "title_ar": "البرجان المستديران",
+        "description_en":
+            "Two massive rounded towers flank the southern "
+            "gateway into the historic city.",
+        "description_ar":
+            "يحيط بالبوابة الجنوبية برجان ضخمان "
+            "مستديران.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "bab-zuwayla",
+        "title_en": "Central Arched Passage",
+        "title_ar": "الممر ذو العقد",
+        "description_en":
+            "A monumental arched opening passes between "
+            "the two defensive towers.",
+        "description_ar":
+            "يمر مدخل كبير معقود بين "
+            "البرجين الدفاعيين.",
+        "image_url": None,
+    },
+
+    {
+        "place_slug": "bab-zuwayla",
+        "title_en": "Minarets Above the Gate",
+        "title_ar": "المآذن فوق الباب",
+        "description_en":
+            "The later minarets of al-Mu'ayyad Shaykh rise "
+            "directly from the two gate towers.",
+        "description_ar":
+            "ترتفع مئذنتا جامع المؤيد شيخ "
+            "مباشرة فوق برجي الباب.",
+        "image_url": None,
+    },
+]
 
 def seed_places() -> None:
     initialize_database()
@@ -1274,26 +1887,81 @@ def seed_places() -> None:
         db.commit()
 
 
-def seed_feature() -> None:
+def seed_features() -> None:
+
     with SessionLocal() as db:
-        place = (
-            db.query(Place)
-            .filter(Place.slug == feature_data["place_slug"])
-            .first()
-        )
 
-        if place is None:
-            print("Place not found")
-            return
+        for feature_data in features_data:
 
-        new_feature = Feature(
-            place_id=place.id,
-            title_en=feature_data["title_en"],
-            title_ar=feature_data["title_ar"],
-            description_en=feature_data["description_en"],
-            description_ar=feature_data["description_ar"],
-            image_url=feature_data["image_url"],
-        )
+            place = (
+                db.query(Place)
+                .filter(
+                    Place.slug == feature_data["place_slug"]
+                )
+                .first()
+            )
+
+            if place is None:
+                print(
+                    f"Place not found: "
+                    f"{feature_data['place_slug']}"
+                )
+                continue
+
+            existing_feature = (
+                db.query(Feature)
+                .filter(
+                    Feature.place_id == place.id,
+                    Feature.title_en == feature_data["title_en"]
+                )
+                .first()
+            )
+
+            if existing_feature:
+
+                existing_feature.title_ar = (
+                    feature_data["title_ar"]
+                )
+
+                existing_feature.description_en = (
+                    feature_data["description_en"]
+                )
+
+                existing_feature.description_ar = (
+                    feature_data["description_ar"]
+                )
+
+                existing_feature.image_url = (
+                    feature_data["image_url"]
+                )
+
+                print(
+                    f"Updated feature: "
+                    f"{feature_data['title_en']}"
+                )
+
+            else:
+
+                new_feature = Feature(
+                    place_id=place.id,
+
+                    title_en=feature_data["title_en"],
+                    title_ar=feature_data["title_ar"],
+
+                    description_en=feature_data["description_en"],
+                    description_ar=feature_data["description_ar"],
+
+                    image_url=feature_data["image_url"],
+                )
+
+                db.add(new_feature)
+
+                print(
+                    f"Seeded feature: "
+                    f"{feature_data['title_en']}"
+                )
+
+        db.commit()
 
         db.add(new_feature)
         db.commit()
@@ -1302,4 +1970,4 @@ def seed_feature() -> None:
 
 if __name__ == "__main__":
     seed_places()
-    seed_feature()
+    seed_features()
