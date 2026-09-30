@@ -5,8 +5,10 @@ from sqlalchemy import or_
 from sqlalchemy.orm import Session
 
 from database.database import get_db
+from models.features import Feature
+from models.images import PlaceImage
 from models.place import Place
-from schemas.places import PlaceRead
+from schemas.places import PlaceDetailRead, PlaceRead
 
 
 router = APIRouter()
@@ -48,18 +50,19 @@ def search_places(
 
 
 @router.get(
-    "/places/{slug}",
-    response_model=PlaceRead
+    "/places/{identifier}",
+    response_model=PlaceDetailRead
 )
 def get_place(
-    slug: str,
+    identifier: str,
     db: Annotated[Session, Depends(get_db)]
 ):
-    place = (
-        db.query(Place)
-        .filter(Place.slug == slug)
-        .first()
-    )
+    place = None
+    if identifier.isdecimal():
+        place = db.query(Place).filter(Place.id == int(identifier)).first()
+
+    if place is None:
+        place = db.query(Place).filter(Place.slug == identifier).first()
 
     if place is None:
         raise HTTPException(
@@ -67,4 +70,15 @@ def get_place(
             detail="Place not found"
         )
 
-    return place
+    place_data = PlaceRead.model_validate(place).model_dump()
+    place_data["images"] = (
+        db.query(PlaceImage)
+        .filter(PlaceImage.place_id == place.id)
+        .all()
+    )
+    place_data["features"] = (
+        db.query(Feature)
+        .filter(Feature.place_id == place.id)
+        .all()
+    )
+    return place_data

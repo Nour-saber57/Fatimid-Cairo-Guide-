@@ -1,5 +1,8 @@
 from pydantic import BaseModel, ConfigDict
 
+from schemas.features import FeatureRead
+from schemas.images import ImageRead
+
 
 class PlaceRead(BaseModel):
     model_config = ConfigDict(from_attributes=True)
@@ -56,3 +59,8 @@ class PlaceRead(BaseModel):
     source_reference: str | None = None
 
     verification_url: str | None = None
+
+
+class PlaceDetailRead(PlaceRead):
+    images: list[ImageRead] = []
+    features: list[FeatureRead] = []
