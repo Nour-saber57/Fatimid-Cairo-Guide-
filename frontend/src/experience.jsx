@@ -187,7 +187,6 @@ function App() {
         <div className="header-actions">
           {searchOpen && <input className="header-search" autoFocus placeholder={text.search} value={search} onChange={(event) => { setSearch(event.target.value); setPage("explore"); }} />}
           <button className="icon-button" type="button" aria-label={text.search} onClick={() => setSearchOpen((value) => !value)}>⌕</button>
-          <button className="guide-shortcut" type="button" aria-label={text.ask} onClick={() => navigate("guide")}>✳</button>
           <span className="header-rule" />
           <div className="language-switch">
             <button type="button" className={language === "ar" ? "active" : ""} onClick={() => setLanguage("ar")}>عربي</button>
@@ -376,7 +375,7 @@ function App() {
     return guidePage();
   }
 
-  return <div className={`experience ${isArabic ? "arabic" : ""}`} dir={isArabic ? "rtl" : "ltr"}>{header()}{body()}<footer className="site-footer"><span>AL-MUIZZ · CAIRO</span><span>{text.north} &nbsp;—&nbsp; {text.south}</span><button type="button" onClick={() => navigate("guide")}>{text.ask} ↗</button></footer></div>;
+  return <div className={`experience ${isArabic ? "arabic" : ""}`} dir={isArabic ? "rtl" : "ltr"}>{header()}{body()}<footer className="site-footer"><span>AL-MUIZZ · CAIRO</span><span>{text.north} &nbsp;—&nbsp; {text.south}</span></footer>{page !== "guide" && <button className="guide-fab" type="button" aria-label={text.ask} onClick={() => navigate("guide")}><span className="guide-fab-icon" aria-hidden="true">۞</span><span className="guide-fab-tooltip">{text.ask}</span></button>}</div>;
 }
 
 export default App;
