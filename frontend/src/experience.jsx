@@ -143,8 +143,13 @@ function App() {
     setQuestion("");
   }
 
-  function photo(url, alt, className = "") {
-    return url ? <img className={className} src={url} alt={alt} onError={(event) => { if (!event.currentTarget.dataset.fallback) { event.currentTarget.dataset.fallback = "true"; event.currentTarget.src = "/images/street.png"; } }} /> : null;
+  function photo(url, alt, className = "", eager = false, width = 480) {
+    if (!url) return null;
+    const localImageUrl = url.startsWith("/images/") ? url.replace(/\.png$/, ".webp") : url;
+    const imageUrl = localImageUrl.includes("commons.wikimedia.org/wiki/Special:FilePath/")
+      ? `${localImageUrl}${localImageUrl.includes("?") ? "&" : "?"}width=${width}`
+      : localImageUrl;
+    return <img className={className} src={imageUrl} alt={alt} loading={eager ? "eager" : "lazy"} decoding="async" fetchPriority={eager ? "high" : "auto"} onError={(event) => { if (!event.currentTarget.dataset.fallback) { event.currentTarget.dataset.fallback = "true"; event.currentTarget.src = "/images/street.webp"; } }} />;
   }
 
   function categoryLabel(value) {
@@ -198,7 +203,7 @@ function App() {
     const gate = places.find((place) => place.category === "gate") || places[0];
     return (
       <main className="landing-page">
-        {photo("/images/entrance.png", "Illustrated entrance to historic Cairo", "landing-photo")}
+        {photo("/images/entrance.png", "Illustrated entrance to historic Cairo", "landing-photo", true, 1280)}
         <div className="landing-vignette" />
         <div className="landing-ornament" aria-hidden="true">۞</div>
         <section className="landing-copy">
@@ -220,7 +225,7 @@ function App() {
     return (
       <main className="page-shell overview-page">
         <section className="overview-hero">
-          {photo("/images/street.png", "Al-Muizz Street architectural illustration")}
+          {photo("/images/street.png", "Al-Muizz Street architectural illustration", "", true, 1280)}
           <div className="overview-shade" />
           <div className="overview-hero-copy">
             <span className="arabic-title">شارع المعز لدين الله</span>
@@ -326,7 +331,7 @@ function App() {
         <div className="breadcrumb"><button type="button" onClick={() => navigate("explore")}>{text.back}</button><span>›</span><span>{local(activePlace, "name", language)}</span></div>
         <section className="detail-hero">
           <div className="detail-cover">
-            {photo(heroImage, local(activePlace, "name", language))}
+            {photo(heroImage, local(activePlace, "name", language), "", true, 1280)}
             <div className="detail-cover-shade" />
             <div className="detail-title"><span className="eyebrow">{categoryLabel(activePlace?.category || "")} &nbsp;·&nbsp; {activePlace?.built_year} CE</span><span className="detail-arabic">{local(activePlace, "name", "ar")}</span><h1>{local(activePlace, "name", language)}</h1><p>{local(activePlace, "short_description", language)}</p></div>
             <button className="detail-story green-button" type="button" onClick={() => setDetailTab("history")}>▶ {text.story}</button><span className="detail-count">{String(activePlace?.route_order || 1).padStart(2, "0")} / {String(places.length).padStart(2, "0")}</span>
