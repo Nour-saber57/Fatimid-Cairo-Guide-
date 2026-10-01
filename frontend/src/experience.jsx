@@ -12,7 +12,7 @@ const words = {
     categories: { mosque: "Mosques", madrasa: "Madrasas", madrasa_mausoleum: "Madrasas", madrasa_khanqah: "Madrasas", palace: "Palaces", sabil_kuttab: "Houses", gate: "Gates", complex: "Complexes", hammam: "Houses" },
     overview: "Overview", history: "History", architecture: "Architecture", details: "Details", gallery: "Gallery", location: "Location", features: "Architectural Features", featureIntro: "Discover the unique elements that make this monument special.",
     story: "Read the Story", sources: "Sources", official: "Official reference", built: "Built", period: "Period", patron: "Patron", locationLabel: "Location", viewAll: "View all", all: "All", ask: "Ask Your Historical Guide", askSub: "Ask anything about Al-Muizz Street, its monuments, architecture, or the culture of Fatimid Cairo.",
-    prompt1: "Why is Al-Hakim Mosque important?", prompt2: "What is the meaning of this decoration?", prompt3: "How did people live in Fatimid Cairo?", prompt4: "Compare Al-Aqmar and Al-Hakim Mosques.", input: "Type your question...", send: "Send question", loading: "Opening the guide...", error: "The guide could not load. Check that the backend is running.", retry: "Try again", noMatch: "No places match your search.", back: "Back to the route", aboutTitle: "A city shaped by centuries", aboutText: "Al-Muizz Street gathers the layers of Cairo in one walk: Fatimid gates, Mamluk schools, Ottoman houses and the everyday life that continues around them.", answerFallback: "Choose a monument from the route to explore its history, architecture and stories.", guideIntro: "I can help you explore the places along Al-Muizz Street. Try one of these questions or ask about the selected monument.",
+    prompt1: "Why is Al-Hakim Mosque important?", prompt2: "What is the meaning of this decoration?", prompt3: "How did people live in Fatimid Cairo?", prompt4: "Compare Al-Aqmar and Al-Hakim Mosques.", input: "Type your question...", send: "Send question", thinking: "Thinking...", guideRequestError: "I couldn't reach the guide. Check the backend and try again.", loading: "Opening the guide...", error: "The guide could not load. Check that the backend is running.", retry: "Try again", noMatch: "No places match your search.", back: "Back to the route", aboutTitle: "A city shaped by centuries", aboutText: "Al-Muizz Street gathers the layers of Cairo in one walk: Fatimid gates, Mamluk schools, Ottoman houses and the everyday life that continues around them.", answerFallback: "Choose a monument from the route to explore its history, architecture and stories.", guideIntro: "I can help you explore the places along Al-Muizz Street. Try one of these questions or ask about the selected monument.",
   },
   ar: {
     nav: { home: "الرئيسية", explore: "استكشف", map: "الخريطة", stories: "الحكايات", about: "عن الدليل" },
@@ -24,7 +24,7 @@ const words = {
     categories: { mosque: "مساجد", madrasa: "مدارس", madrasa_mausoleum: "مدارس", madrasa_khanqah: "مدارس", palace: "قصور", sabil_kuttab: "بيوت", gate: "أبواب", complex: "مجموعات معمارية", hammam: "بيوت" },
     overview: "نظرة عامة", history: "التاريخ", architecture: "العمارة", details: "تفاصيل", gallery: "الصور", location: "الموقع", features: "عناصر معمارية", featureIntro: "اكتشف العناصر الفريدة التي تمنح هذا الأثر تميّزه.",
     story: "اقرأ الحكاية", sources: "المراجع", official: "المصدر الرسمي", built: "تاريخ البناء", period: "العصر", patron: "الراعي", locationLabel: "الموقع", viewAll: "عرض الكل", all: "الكل", ask: "اسأل دليلك التاريخي", askSub: "اسأل عن شارع المعز أو معالمه أو عمارته أو ثقافة القاهرة الفاطمية.",
-    prompt1: "ما أهمية جامع الحاكم؟", prompt2: "ما معنى هذه الزخارف؟", prompt3: "كيف عاش الناس في القاهرة الفاطمية؟", prompt4: "قارن بين جامعي الأقمر والحاكم.", input: "اكتب سؤالك...", send: "إرسال السؤال", loading: "جارٍ فتح الدليل...", error: "تعذر تحميل الدليل. تأكد من تشغيل الخادم.", retry: "حاول مرة أخرى", noMatch: "لا توجد أماكن تطابق البحث.", back: "العودة إلى المسار", aboutTitle: "مدينة صاغتها القرون", aboutText: "يجمع شارع المعز طبقات القاهرة في مسيرة واحدة: أبواب فاطمية ومدارس مملوكية وبيوت عثمانية وحياة يومية تستمر حولها.", answerFallback: "اختر معلمًا من المسار لاستكشاف تاريخه وعماره وحكاياته.", guideIntro: "أساعدك في اكتشاف معالم شارع المعز. اختر أحد الأسئلة أو اسأل عن المعلم المحدد.",
+    prompt1: "ما أهمية جامع الحاكم؟", prompt2: "ما معنى هذه الزخارف؟", prompt3: "كيف عاش الناس في القاهرة الفاطمية؟", prompt4: "قارن بين جامعي الأقمر والحاكم.", input: "اكتب سؤالك...", send: "إرسال السؤال", thinking: "جارٍ التفكير...", guideRequestError: "تعذر الوصول إلى الدليل. تحقق من الخادم وحاول مرة أخرى.", loading: "جارٍ فتح الدليل...", error: "تعذر تحميل الدليل. تأكد من تشغيل الخادم.", retry: "حاول مرة أخرى", noMatch: "لا توجد أماكن تطابق البحث.", back: "العودة إلى المسار", aboutTitle: "مدينة صاغتها القرون", aboutText: "يجمع شارع المعز طبقات القاهرة في مسيرة واحدة: أبواب فاطمية ومدارس مملوكية وبيوت عثمانية وحياة يومية تستمر حولها.", answerFallback: "اختر معلمًا من المسار لاستكشاف تاريخه وعماره وحكاياته.", guideIntro: "أساعدك في اكتشاف معالم شارع المعز. اختر أحد الأسئلة أو اسأل عن المعلم المحدد.",
   },
 };
 
@@ -59,6 +59,8 @@ function App() {
   const [activeImage, setActiveImage] = useState(null);
   const [question, setQuestion] = useState("");
   const [conversation, setConversation] = useState([]);
+  const [chatLoading, setChatLoading] = useState(false);
+  const [chatError, setChatError] = useState("");
   const text = words[language];
   const isArabic = language === "ar";
 
@@ -132,15 +134,41 @@ function App() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  function sendQuestion(value = question) {
+  async function sendQuestion(value = question) {
     const prompt = value.trim();
-    if (!prompt) return;
-    const normalized = prompt.toLocaleLowerCase();
-    const match = places.find((place) => [place.name_en,place.name_ar,place.slug.replaceAll("-"," ")].filter(Boolean).some((name) => normalized.includes(name.toLocaleLowerCase()))) || (normalized.includes("hakim") || normalized.includes("الحاكم") ? places.find((p) => p.slug === "al-hakim-mosque") : null) || activePlace;
-    const field = /decor|architect|زخرف|عمار/.test(normalized) ? "architecture" : "history";
-    const answer = local(match, field, language) || local(match, "overview", language) || text.answerFallback;
-    setConversation((current) => [...current, { question: prompt, answer }]);
-    setQuestion("");
+    if (!prompt || chatLoading) return;
+    setChatLoading(true);
+    setChatError("");
+    try {
+      const placeContext = activePlace ? [
+        `Monument: ${local(activePlace, "name", language)}`,
+        `Category: ${categoryLabel(activePlace.category)}`,
+        `Built: ${local(activePlace, "built_date", language) || activePlace.built_year || ""}`,
+        `Overview: ${local(activePlace, "overview", language)}`,
+        `History: ${local(activePlace, "history", language)}`,
+        `Architecture: ${local(activePlace, "architecture", language)}`,
+        `Details: ${local(activePlace, "details", language)}`,
+      ].filter((line) => !line.endsWith(": ")).join("\n").slice(0, 6000) : "";
+      const history = conversation.slice(-4).flatMap(({ question: previousQuestion, answer }) => [
+        { role: "user", content: previousQuestion },
+        { role: "assistant", content: answer },
+      ]);
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: prompt, language, place_context: placeContext, history }),
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.detail || text.guideRequestError);
+      if (!result.answer) throw new Error(text.guideRequestError);
+      setConversation((current) => [...current, { question: prompt, answer: result.answer }]);
+      setQuestion("");
+    } catch (requestError) {
+      setQuestion(prompt);
+      setChatError(requestError.message || text.guideRequestError);
+    } finally {
+      setChatLoading(false);
+    }
   }
 
   function photo(url, alt, className = "", eager = false, width = 480) {
@@ -359,7 +387,7 @@ function App() {
 
   function guidePage() {
     const prompts = [text.prompt1, text.prompt2, text.prompt3, text.prompt4];
-    return <main className="page-shell guide-page"><section className="guide-art">{photo("/images/lantern.png", "Illustrated brass lantern in historic Cairo")}</section><section className="guide-content"><span className="eyebrow">AL-MUIZZ · FATIMID CAIRO</span><span className="guide-arabic" lang="ar">اسأل دليلك التاريخي</span><h1>{text.ask}</h1><p>{text.askSub}</p><div className="chat-thread">{conversation.length > 0 && <div className="guide-message">{text.guideIntro}</div>}{conversation.map((item, index) => <React.Fragment key={index}><div className="user-message">{item.question}</div><div className="guide-message">{item.answer}</div></React.Fragment>)}</div><div className="prompt-list">{prompts.map((prompt) => <button key={prompt} type="button" onClick={() => sendQuestion(prompt)}><span>✧</span>{prompt}<b>›</b></button>)}</div><form className="chat-form" onSubmit={(event) => { event.preventDefault(); sendQuestion(); }}><input value={question} onChange={(event) => setQuestion(event.target.value)} placeholder={text.input} aria-label={text.input} /><button type="submit" aria-label={text.send}>➤</button></form><small className="guide-footnote">{isArabic ? "إجابات من محتوى الدليل المحفوظ" : "Answers from the guide’s saved monument content"}</small></section></main>;
+    return <main className="page-shell guide-page"><section className="guide-art">{photo("/images/lantern.png", "Illustrated brass lantern in historic Cairo")}</section><section className="guide-content"><span className="eyebrow">AL-MUIZZ · FATIMID CAIRO</span><span className="guide-arabic" lang="ar">اسأل دليلك التاريخي</span><h1>{text.ask}</h1><p>{text.askSub}</p><div className="chat-thread" aria-live="polite">{conversation.length > 0 && <div className="guide-message">{text.guideIntro}</div>}{conversation.map((item, index) => <React.Fragment key={index}><div className="user-message">{item.question}</div><div className="guide-message">{item.answer}</div></React.Fragment>)}{chatLoading && <div className="guide-message" role="status">{text.thinking}</div>}</div>{chatError && <p className="chat-error" role="alert">{chatError}</p>}<div className="prompt-list">{prompts.map((prompt) => <button key={prompt} type="button" disabled={chatLoading} onClick={() => sendQuestion(prompt)}><span>✧</span>{prompt}<b>›</b></button>)}</div><form className="chat-form" onSubmit={(event) => { event.preventDefault(); sendQuestion(); }}><input value={question} onChange={(event) => setQuestion(event.target.value)} placeholder={text.input} aria-label={text.input} /><button type="submit" aria-label={text.send} disabled={chatLoading || !question.trim()}>{chatLoading ? "…" : "➤"}</button></form><small className="guide-footnote">{isArabic ? "إجابات من الدليل التاريخي المدعوم بالذكاء الاصطناعي" : "AI-powered answers grounded in the historical guide"}</small></section></main>;
   }
 
   function body() {

@@ -12,6 +12,7 @@ from models.images import PlaceImage
 from routers.places import router as places_router
 from routers.features import router as features_router
 from routers.images import router as images_router
+from routers.chat import router as chat_router
 
 
 @asynccontextmanager
@@ -26,6 +27,7 @@ app = FastAPI(lifespan=lifespan)
 app.include_router(places_router)
 app.include_router(features_router)
 app.include_router(images_router)
+app.include_router(chat_router)
 
 
 @app.get("/health")
