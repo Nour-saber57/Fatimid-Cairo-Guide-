@@ -1,7 +1,6 @@
 fastapi[standard]
-sqlalchemy>=2.0,<3.0
-httpx>=0.27,<1.0
+sqlalchemy
+httpx
 uvicorn
 python-dotenv
-huggingface_hub
-python-multipart
+google-genai
