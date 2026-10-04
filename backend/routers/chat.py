@@ -53,14 +53,18 @@ async def chat(request: ChatRequest):
 
     try:
         response = await client.aio.models.generate_content(
-            model=os.getenv("GEMINI_MODEL", "gemini-2.5-flash"),
+            model=os.getenv("GEMINI_MODEL", "gemini-3.8-flash"),
             contents=contents,
             config={"system_instruction": system_instruction},
         )
     except Exception as error:
+        print("========== GEMINI ERROR ==========")
+        print(repr(error))
+        print("===================================")
+
         raise HTTPException(
             status_code=502,
-            detail="The historical guide could not reach Gemini. Please try again.",
+            detail=f"Gemini error: {str(error)}",
         ) from error
 
     return {"answer": response.text}
