@@ -6,15 +6,15 @@ The development server proxies `/api` requests to FastAPI at http://127.0.0.1:80
 
 ## AI historical guide
 
-The guide sends chat requests through FastAPI to Hugging Face Inference Providers. Set a newly created token in the backend terminal before starting the API; do not put the token in frontend code:
+The guide sends chat requests through FastAPI to Gemini. Set your API key in the backend terminal before starting the API; do not put the key in frontend code:
 
 ```powershell
-$env:HF_TOKEN = "your_new_hugging_face_token"
-$env:HF_MODEL = "Qwen/Qwen2.5-7B-Instruct"
+$env:GEMINI_API_KEY = "your_gemini_api_key"
+$env:GEMINI_MODEL = "gemini-2.5-flash"
 uvicorn main:app --reload
 ```
 
-Run these commands from `backend`. `HF_MODEL` is optional and can be changed to a model enabled for your Hugging Face account. The backend keeps the token private. If a token was pasted into chat or another shared log, revoke it and use a replacement.
+Run these commands from `backend`. `GEMINI_MODEL` is optional; the backend defaults to `gemini-2.5-flash`. The backend keeps the key private. If a key was pasted into chat or another shared log, revoke it and use a replacement.
 
 The entrance, street, lantern and map backgrounds in `public/images` are generated illustrations. Monument images come from the existing Wikimedia Commons records; unavailable images use the street illustration as a fallback. The map is an interactive schematic, not a geographic navigation map. The story button opens the history tab.
 
