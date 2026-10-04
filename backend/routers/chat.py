@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from typing import Literal
 
 from fastapi import APIRouter, HTTPException
@@ -6,6 +7,9 @@ from pydantic import BaseModel, Field
 from google import genai
 
 router = APIRouter()
+SYSTEM_INSTRUCTIONS_PATH = (
+    Path(__file__).resolve().parents[1] / "tests" / "system-instructions.txt"
+)
 
 
 def get_client() -> genai.Client:
@@ -33,12 +37,7 @@ class ChatRequest(BaseModel):
 @router.post("/chat")
 async def chat(request: ChatRequest):
     client = get_client()
-    language = "Arabic" if request.language == "ar" else "English"
-    system_instruction = (
-        "You are the historical guide for Fatimid Cairo. Give clear, engaging, "
-        "historically careful answers. Distinguish established facts from uncertainty, "
-        f"and answer in {language}. Treat the visitor's question as the request."
-    )
+    system_instruction = SYSTEM_INSTRUCTIONS_PATH.read_text(encoding="utf-8").strip()
     if request.place_context:
         system_instruction += f"\n\nCurrent monument reference:\n{request.place_context}"
 

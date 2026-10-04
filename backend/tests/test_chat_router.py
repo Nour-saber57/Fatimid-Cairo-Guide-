@@ -1,5 +1,6 @@
 import os
 import unittest
+from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, patch
 
@@ -29,6 +30,9 @@ class GeminiChatTest(unittest.IsolatedAsyncioTestCase):
                 {"role": "assistant", "content": "It is a Fatimid mosque."},
             ],
         )
+        system_instruction = Path(__file__).with_name(
+            "system-instructions.txt"
+        ).read_text(encoding="utf-8").strip()
 
         with patch("routers.chat.get_client", return_value=client), patch.dict(
             os.environ, {"GEMINI_MODEL": "test-model"}
@@ -45,9 +49,7 @@ class GeminiChatTest(unittest.IsolatedAsyncioTestCase):
             ],
             config={
                 "system_instruction": (
-                    "You are the historical guide for Fatimid Cairo. Give clear, engaging, "
-                    "historically careful answers. Distinguish established facts from uncertainty, "
-                    "and answer in Arabic. Treat the visitor's question as the request.\n\n"
+                    f"{system_instruction}\n\n"
                     "Current monument reference:\nMonument: Al-Hakim Mosque"
                 )
             },
